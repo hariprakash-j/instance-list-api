@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  instances-list
+
+  Sample SAM Template for instances-list
+
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  InstanceList:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: lambda/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Policy:
+        - EC2DescribePolicy: {}
+      Events:
+        HelloWorld:
+          Type: Api 
+          Properties:
+            Path: /getinstancelist
+            Method: get
+
+Outputs:
+  InstanceListApi:
+    Description: "API Gateway endpoint URL for Prod stage for InstanceList function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/getinstancelist/"
+  InstanceList:
+    Description: "Instance List Lambda Function ARN"
+    Value: !GetAtt InstanceList.Arn

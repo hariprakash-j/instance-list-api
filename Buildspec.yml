@@ -1,0 +1,23 @@
+version: 0.2
+
+run-as: root
+
+phases:
+  install:
+    run-as: root
+    on-failure: ABORT
+    runtime-versions:
+      python: 3.8
+    commands:
+      - pip3 -u install pytest
+  pre_build:
+    run-as: root
+    on-failure: ABORT
+    commands:
+      - pytest -q ./lambda/test_app.py
+
+  build:
+    run-as: root
+    on-failure: ABORT
+    commands:
+      - command
