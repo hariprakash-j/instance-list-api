@@ -9,7 +9,7 @@ phases:
     runtime-versions:
       python: 3.8
     commands:
-      - pip -U install pytest
+      - pip install pytest
   pre_build:
     run-as: root
     on-failure: ABORT
