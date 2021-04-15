@@ -20,7 +20,7 @@ phases:
     run-as: root
     on-failure: ABORT
     commands:
-      - aws cloudformation package --template-file template.yaml --output-template-file outputTemplate.yaml
+      - aws cloudformation package --template-file template.yaml --s3-bucket artificats-instance-list-api-xfas34f --output-template-file outputTemplate.yaml
 artifacts:
   type: zip
   files:
