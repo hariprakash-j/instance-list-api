@@ -21,8 +21,8 @@ phases:
     on-failure: ABORT
     commands:
       - aws cloudformation package --template-file template.yaml --output-template-file outputTemplate.yaml
-  artifacts:
-    type: zip
-    files:
-      - template.yaml
-      - outputTemplate.yaml
+artifacts:
+  type: zip
+  files:
+    - template.yaml
+    - outputTemplate.yaml
