@@ -17,7 +17,7 @@ Resources:
       Handler: app.lambda_handler
       Runtime: python3.8
       Policy:
-        - EC2DescribePolicy: {}
+        - EC2DescribePolicy
       Events:
         HelloWorld:
           Type: Api 
