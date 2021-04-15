@@ -8,7 +8,7 @@ Description: >
 Globals:
   Function:
     Timeout: 6
-    Memory: 256
+    MemorySize: 256
 
 Resources:
   InstanceList:
