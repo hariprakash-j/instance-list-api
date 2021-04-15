@@ -1,7 +1,7 @@
 import pytest
 import time
 import tracemalloc
-from list_instances_aws_mp import AwsInstances
+from app import AwsInstances
 
 def test_dict_keys_length():
     instance_list = AwsInstances()
