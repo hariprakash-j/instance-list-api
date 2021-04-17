@@ -21,7 +21,7 @@ class AwsInstances():
         ec2_region = boto3.client('ec2', config=my_config)
         response = ec2_region.describe_instances()
         try:
-            instance_ids = [instance['InstanceId'] for instance in response['Reservations'][0]['Instances']]
+            instance_ids = [instance['Instances'][0]['InstanceId'] for instance in response['Reservations']]
             self.instance_dict[region_aws_name] = {'instanceIDs': instance_ids, 'totalInstances': len(instance_ids)}
         except IndexError:
             self.instance_dict[region_aws_name] = {}

@@ -14,7 +14,7 @@ phases:
     run-as: root
     on-failure: ABORT
     commands:
-      - pytest -q ./lambda/test_app.py
+      - pytest ./lambda/test_app.py
 
   build:
     run-as: root
