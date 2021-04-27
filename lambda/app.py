@@ -15,7 +15,7 @@ class AwsInstances():
         self.instance_dict = {i['RegionName']:{} for i in response['Regions']}
 
         # threading makes all the api calls at once or close to togeather so its faster
-        self.parallelize2()
+        self.parallelize()
 
     def get_instances_in_region(self, region_aws_name):
         '''gets the instances in a specific region and the total number of instances in a region and writes it to the instance_dict'''
