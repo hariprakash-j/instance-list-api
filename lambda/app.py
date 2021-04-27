@@ -15,7 +15,7 @@ class AwsInstances():
         self.instance_dict = {i['RegionName']:{} for i in response['Regions']}
 
         # threading makes all the api calls at once or close to togeather so its faster
-        self.parallelize2()
+        serialize()
 
     def get_instances_in_region(self, region_aws_name):
         '''gets the instances in a specific region and the total number of instances in a region and writes it to the instance_dict'''
@@ -27,6 +27,11 @@ class AwsInstances():
             self.instance_dict[region_aws_name] = {'instanceIDs': instance_ids, 'totalInstances': len(instance_ids)}
         except IndexError:
             self.instance_dict[region_aws_name] = {}
+
+    def serialize(self):
+        '''sending requests synchronously'''
+        for region in self.instance_dict.keys():
+            self.get_instances_in_region(region)
     
     def parallelize(self):
         ''' old method of paralleizing runs all api calls at in parallel '''
